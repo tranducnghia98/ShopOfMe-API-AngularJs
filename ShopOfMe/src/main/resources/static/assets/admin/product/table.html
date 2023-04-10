@@ -1,0 +1,46 @@
+<div class="panel panel-default" ng-if="items">
+    <div class="panel-heading">Product List</div>
+    <table class="table table-condensed">
+        <thead class="bg-success"> 
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Available</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="p in pager.items">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price | number:2}}</td>
+            <td>{{p.createDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{p.image}}</td>
+            <td>{{p.category.name}}</td>
+            <td>{{p.available ? 'yes': 'No'}}</td>
+
+            <td>
+                <div class="btn-group btn-group-xs">
+                    <button ng-click="edit(p)" class="btn btn-warning">
+                        Edit
+                    </button>
+                    <button ng-click="delete(p)" type="button" class="btn btn-warning">
+                        Delete
+                    </button>
+                </div>
+            </td>
+        </tbody>
+    </table>
+  
+    <div class="panel-footer text-center">
+       
+            <button ng-click="pager.first()" type="button" class="btn btn-info">First</button>
+            <button ng-click="pager.prev()" type="button" class="btn btn-warning">Prev</button>
+            <button type="button" class="btn btn-danger">{{pager.page +1}} of {{pager.count}}</button>
+            <button ng-click="pager.next()" type="button" class="btn btn-info">Next</button>
+            <button ng-click="pager.last()" type="button" class="btn btn-warning">Last</button>
+    </div>
+  </div>

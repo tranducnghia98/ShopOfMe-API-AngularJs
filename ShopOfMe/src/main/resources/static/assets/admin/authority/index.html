@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Authorize edition</div>
+    <table class="table table-border">
+        <thead class="bg-success">
+            <tr>
+                <th></th>
+                <th ng-repeat="role in roles" class="text-center">
+                    {{role.name}}
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-repeat="acc in admins">
+            <th>{{acc.fullname}}</th>
+            <th ng-repeat="role in roles" class="text-center">
+                <input type="checkbox" ng-checked="authority_of(acc,role)"
+                ng-click="authority_changed(acc,role)">
+            </th>
+        </tbody>
+
+    </table>
+</div>

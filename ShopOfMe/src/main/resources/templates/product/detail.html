@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/index::dynamic(~{::main})}">
+
+<head>
+    ...
+</head>
+
+<body>
+    <main class="container" th:object="${item}">
+        <div class="card">
+            <div class="card-body">
+
+                <img style="height: 70%;max-width: 75%;" class="card-img-top" th:src="@{|/assets/images/*{image}|}"
+                    alt="Card image cap">
+    
+            </div>
+            <div class="card-header">
+                <h4 class="card-title" th:text="*{name}"></h4>
+                <p class="card-text" th:text="*{category.name}"></p>
+                <p th:text="*{price}"></p>
+                <p th:text="*{createDate}"></p>
+                
+            </div>
+           <div class="card-body">
+            <div class="list-group list-group-flush" th:each=" p: ${item.category.products}">
+                <a class="list-group-item" th:href="@{|/product/detail/${p.id}|}">
+                    <p th:text="${p.name}"></p>
+                </a>
+            </div>
+           </div>
+        </div>
+        <!-- <ul >
+            <li th:each=" p: ${item.category.products}">
+                <a th:href="@{|/product/detail/${p.id}|}">
+                    <p th:text="${p.name}"></p>
+                </a>
+            </li>
+           </ul> -->
+    </main>
+</body>
+
+</html>
